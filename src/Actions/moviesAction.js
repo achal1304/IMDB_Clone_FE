@@ -1,5 +1,5 @@
 export const updateMovies = movies => {
-    console.log("Inside updatemovies", movies);
+    // console.log("Inside updatemovies", movies);
     return{
         type: "ADD_MOVIES",
         payload: movies,
