@@ -1,0 +1,68 @@
+.addMovie_container{
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.form_wrapper div{
+    margin: 10px ;
+}
+
+.form_wrapper input[type = "text"],
+.form_wrapper input[type = "number"],
+.form_wrapper input[type = "date"]{
+    float: right;
+    max-width: 70%;
+    width: 100%;
+}
+
+.form_wrapper .actors_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.actors_wrapper ul{
+    float: right;
+    margin: auto;
+    display: grid;
+    max-width: 72%;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+}
+.actors_wrapper ul > label{
+    margin: auto 10%;
+}
+.producer_wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.producer_wrapper select{
+    max-width: 72%;
+    width: 100%;
+}
+
+.button-primary{
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.button-primary:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.add_actor_producer_wrapper{
+    display: flex;
+    margin: 10px auto;
+    justify-content: space-between;
+}
+.actorproducer_container{
+    max-width: 90%;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px auto;
+}

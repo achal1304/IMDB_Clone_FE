@@ -7,6 +7,14 @@
 
 }
 
+.features{
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px auto;
+}
+
 .movie_wrapper{
     max-width: 600px;
     width: 100%;
@@ -25,6 +33,7 @@
     width: 100%;
     background-color: black;
     color: white;
+    margin: auto 2px;
 }
 
 .button-primary:hover{

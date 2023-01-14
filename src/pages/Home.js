@@ -81,20 +81,26 @@ export class Home extends Component {
             })
     }
 
-    onAddMoviesClicked = () => {
+    onAddMoviesClicked = (value) => {
         this.setState({
-            isAddMoviesClicked: true
+            isAddMoviesClicked: value
         })
     }
 
     render() {
-        let buttonAddMovie = (<button className='primary-button' onClick={()=>this.onAddMoviesClicked()}>Add a Movie</button>)
+        let buttonAddMovie = (<div className='movie_wrapper'>
+            <button className='button-primary' onClick={() => this.onAddMoviesClicked(true)}>Add a Movie</button>
+        </div>)
         return (
             <div>
-                {this.state.isAddMoviesClicked
-                    ? <AddMovie />
-                    : buttonAddMovie}
                 <div className='movie_container'>
+                    {this.state.isAddMoviesClicked
+                        ? <AddMovie
+                            getAllMovies={this.getAllMovies}
+                            onAddMoviesClicked={this.onAddMoviesClicked}
+                            getAllProducers={this.getAllProducers}
+                            getAllActors={this.getAllActors} />
+                        : buttonAddMovie}
                     {this.props.movies.map((movie) => {
                         return (
                             <div key={movie.id}>
