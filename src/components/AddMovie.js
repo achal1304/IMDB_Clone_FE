@@ -23,8 +23,6 @@ function AddMovie(props) {
     const [errorMessage, seterrorMessage] = useState("")
     const [clickType, setclickType] = useState("");
 
-
-    const dispatch = useDispatch();
     const actors = useSelector(state => state.actors.actors);
     const producers = useSelector(state => state.producers.producers);
 
@@ -43,7 +41,6 @@ function AddMovie(props) {
         }
 
         setmovie({ ...movie, actors: actorIds });
-        // console.log(movie)
     };
 
     const handleProducerClick = (e) => {
@@ -67,14 +64,10 @@ function AddMovie(props) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        console.log('err', errorMessage);
-        console.log('Movies', JSON.stringify(movie));
         if (errorMessage == "" && movie.name != "" && movie.plot != "" && movie.producerId != 0) {
-            console.log("");
             fetch('http://localhost:8080/movies/', requestOptions)
                 .then(async (response) => {
                     const data = await response.json();
-                    console.log("response for insertmovies is", data)
                     if (!response.ok) {
                         const error = (data && data.message) || response.statusText;
                         return Promise.reject(error);
@@ -121,7 +114,6 @@ function AddMovie(props) {
         setclickType(e.target.value);
     }
 
-    console.log(movie)
     var clickValue = "";
     if (clickType == "actor") {
         clickValue = <AddActorProducer
@@ -184,7 +176,6 @@ function AddMovie(props) {
                     </select>
                 </div>
                 <div className='error'>{errorMessage}</div>
-                {/* <button type='submit' value='Submit' disabled = {errorMessage != ""} onClick={handleSubmit}>Add Movie</button> */}
                 <input type='submit' className='button-primary' value="Submit" />
 
             </form>
@@ -194,14 +185,6 @@ function AddMovie(props) {
             </div>
             <div>
                 {clickValue}
-
-                {/* {clickType == "actor"
-                    ? <AddActorProducer type="actor" getDetails={props.getAllActors} /> 
-                    : null}
-
-                {clickType = "producer" ?
-                    <AddActorProducer type="producer" getDetails={props.getAllProducers} /> 
-                    : null} */}
             </div>
         </div>
     )

@@ -32,14 +32,10 @@ function AddActorProducer(props) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        console.log('err', errorMessage);
-        console.log('Movies', JSON.stringify(actorProducer));
         if (errorMessage == "" && actorProducer.name != "" && actorProducer.bio != "" && actorProducer.gender != "") {
-            console.log("");
             fetch(`http://localhost:8080/${props.type}`, requestOptions)
                 .then(async (response) => {
                     const data = await response.json();
-                    console.log("response for insertactororproducer is", data)
                     if (!response.ok) {
                         const error = (data && data.message) || response.statusText;
                         return Promise.reject(error);
@@ -91,7 +87,6 @@ function AddActorProducer(props) {
         }
     }
 
-    console.log(actorProducer)
     return (
         <div className='actorproducer_container'>
             <h3>Enter {props.type} Details</h3>
@@ -115,7 +110,6 @@ function AddActorProducer(props) {
                     <input id='bio' type='text' required onChange={handleBioChange} />
                 </div>
                 <div className='error'>{errorMessage}</div>
-                {/* <button type='submit' value='Submit' disabled = {errorMessage != ""} onClick={handleSubmit}>Add Movie</button> */}
                 <input type='submit' className='button-primary' value="Submit" />
 
             </form>

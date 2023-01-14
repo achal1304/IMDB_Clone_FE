@@ -26,14 +26,10 @@ function EditMovie(props) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         }
-        console.log('err', errorMessage);
-        console.log('Movies', JSON.stringify(movie));
         if (errorMessage == "" && movie.name != "" && movie.plot != "" && movie.producerId != 0) {
-            console.log("");
             fetch('http://localhost:8080/editmovie/', requestOptions)
                 .then(async (response) => {
                     const data = await response.json();
-                    console.log("response for insertmovies is", data)
                     if (!response.ok) {
                         const error = (data && data.message) || response.statusText;
                         return Promise.reject(error);
@@ -99,7 +95,6 @@ function EditMovie(props) {
                 </div>
 
                 <div className='error'>{errorMessage}</div>
-                {/* <button type='submit' value='Submit' disabled = {errorMessage != ""} onClick={handleSubmit}>Add Movie</button> */}
                 <input type='submit' className='button-primary' value="Submit" />
 
             </form>
