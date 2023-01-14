@@ -5,13 +5,15 @@ import { updateActors } from '../Actions/actorsAction';
 import { connect } from "react-redux";
 import '../assets/styles/Home.css';
 import AddMovie from '../components/AddMovie';
+import EditMovie from '../components/EditMovie';
 
 export class Home extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isAddMoviesClicked: false
+            isAddMoviesClicked: false,
+            iseditClicked: 0
         }
 
         this.getAllMovies = this.getAllMovies.bind(this);
@@ -87,6 +89,12 @@ export class Home extends Component {
         })
     }
 
+    handleEditClick = (value) => {
+        this.setState({
+            iseditClicked: value
+        })
+    }
+
     render() {
         let buttonAddMovie = (<div className='movie_wrapper'>
             <button className='button-primary' onClick={() => this.onAddMoviesClicked(true)}>Add a Movie</button>
@@ -114,7 +122,13 @@ export class Home extends Component {
                                         <p>Actors : {movie.actors.join(", ")}</p>
                                         <p>Producer : {movie.producer}</p>
                                     </div>
-                                    <button className='button-primary'>Edit</button>
+                                    <button className='button-primary' onClick={() => this.handleEditClick(movie.id)}>Edit</button>
+                                    {this.state.iseditClicked == movie.id ? <EditMovie
+                                        handleEditClick={this.handleEditClick}
+                                        movieDetails={movie}
+                                        getAllMovies={this.getAllMovies} />
+                                        : ""}
+
                                 </div>
                             </div>
                         )
